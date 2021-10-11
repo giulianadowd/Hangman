@@ -28,7 +28,6 @@ def chooseWord(wordlist):
     """
     return random.choice(wordlist)
 
-# -----------------------------------
 wordlist = loadWords()
 
 def isWordGuessed(secretWord, lettersGuessed):
@@ -71,7 +70,6 @@ def getGuessedWord(secretWord, lettersGuessed):
 
 def getAvailableLetters(lettersGuessed):
     '''
-    lettersGuessed: list, what letters have been guessed so far
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
@@ -111,12 +109,10 @@ def hangman(secretWord):
     while 8 - mistakeMade > 0:
         
         if isWordGuessed(secretWord, lettersGuessed):
-            print("-------------")
             print("Congratulations, you won!")
             break
             
         else:
-            print("-------------")
             print("You have",8-mistakeMade,"guesses left.")
             print("Available letters:",getAvailableLetters(lettersGuessed))
             guess=str(input("Please guess a letter: ")).lower()
@@ -134,7 +130,6 @@ def hangman(secretWord):
                 print("Oops! That letter is not in my word:",getGuessedWord(secretWord,lettersGuessed))
                 
         if 8 - mistakeMade == 0:
-            print("-------------")
             print("Sorry, you ran out of guesses. The word was else.",secretWord)
             break
         
