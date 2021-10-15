@@ -38,8 +38,8 @@ def isWordGuessed(secretWord, lettersGuessed):
       False otherwise
     '''
     c=0
-    for i in lettersGuessed:
-        if i in secretWord:
+    for letter in lettersGuessed:
+        if letter in secretWord:
             c+=1
     if c==len(secretWord):
         return True
@@ -55,12 +55,12 @@ def getGuessedWord(secretWord, lettersGuessed):
       what letters in secretWord have been guessed so far.
     '''
     s=[]
-    for i in secretWord:
-        if i in lettersGuessed:
+    for letter in secretWord:
+        if letter in lettersGuessed:
             s.append(i)
     ans=''
-    for i in secretWord:
-        if i in s:
+    for letter in secretWord:
+        if letter in s:
             ans+=i
         else:
             ans+='_ '
@@ -75,8 +75,8 @@ def getAvailableLetters(lettersGuessed):
     '''
     import string
     ans=list(string.ascii_lowercase)
-    for i in lettersGuessed:
-        ans.remove(i)
+    for letter in lettersGuessed:
+        ans.remove(letter)
     return ''.join(ans)
 
 def hangman(secretWord):
