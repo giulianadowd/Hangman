@@ -37,7 +37,7 @@ def isWordGuessed(secretWord, lettersGuessed):
     returns: boolean, True if all the letters of secretWord are in lettersGuessed;
       False otherwise
     '''
-    count =0
+    count = 0
     for letter in lettersGuessed:
         if letter in secretWord:
             count += 1
@@ -57,7 +57,7 @@ def getGuessedWord(secretWord, lettersGuessed):
     s=[]
     for letter in secretWord:
         if letter in lettersGuessed:
-            s.append(i)
+            s.append(letter)
     ans=''
     for letter in secretWord:
         if letter in s:
