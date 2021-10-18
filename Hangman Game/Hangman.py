@@ -53,13 +53,13 @@ def getGuessedWord(secretWord, lettersGuessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
-    s=[]
+    list=[]
     for i in secretWord:
         if i in lettersGuessed:
-            s.append(i)
+            list.append(i)
     ans=''
     for i in secretWord:
-        if i in s:
+        if i in list:
             ans+=i
         else:
             ans+='_ '
