@@ -36,11 +36,11 @@ def isWordGuessed(secretWord, lettersGuessed):
     returns: boolean, True if all the letters of secretWord are in lettersGuessed;
       False otherwise
     '''
-    c=0
+    count=0
     for i in lettersGuessed:
         if i in secretWord:
-            c+=1
-    if c==len(secretWord):
+            count+=1
+    if count==len(secretWord):
         return True
     else:
         return False
