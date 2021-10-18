@@ -37,8 +37,8 @@ def isWordGuessed(secretWord, lettersGuessed):
       False otherwise
     '''
     count=0
-    for i in lettersGuessed:
-        if i in secretWord:
+    for letter in lettersGuessed:
+        if letter in secretWord:
             count+=1
     if count==len(secretWord):
         return True
@@ -54,13 +54,13 @@ def getGuessedWord(secretWord, lettersGuessed):
       what letters in secretWord have been guessed so far.
     '''
     list=[]
-    for i in secretWord:
-        if i in lettersGuessed:
-            list.append(i)
+    for letter in secretWord:
+        if letter in lettersGuessed:
+            list.append(letter)
     ans=''
-    for i in secretWord:
-        if i in list:
-            ans+=i
+    for letter in secretWord:
+        if letter in list:
+            ans+=letter
         else:
             ans+='_ '
     return ans
@@ -75,8 +75,8 @@ def getAvailableLetters(lettersGuessed):
     '''
     import string
     ans=list(string.ascii_lowercase)
-    for i in lettersGuessed:
-        ans.remove(i)
+    for letter in lettersGuessed:
+        ans.remove(letter)
     return ''.join(ans)
 
 def hangman(secretWord):
@@ -85,7 +85,7 @@ def hangman(secretWord):
     Starts up an interactive game of Hangman.
     * At the start of the game, let the user know how many 
       letters the secretWord contains.
-    * Ask the user to supply one guess (i.e. letter) per round.
+    * Ask the user to supply one guess (letter.e. letter) per round.
     * The user should receive feedback immediately after each guess 
       about whether their guess appears in the computers word.
     * After each round, you should also display to the user the 
