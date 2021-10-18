@@ -1,7 +1,7 @@
 # Hangman game
 import random
 
-WORDLIST_FILENAME = "words.txt"
+WORDLIST_FILENAME = "wordtest.txt"
 
 def loadWords():
     """
@@ -54,13 +54,13 @@ def getGuessedWord(secretWord, lettersGuessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
-    s=[]
+    list = []
     for letter in secretWord:
         if letter in lettersGuessed:
-            s.append(letter)
+            list.append(letter)
     ans=''
     for letter in secretWord:
-        if letter in s:
+        if letter in list:
             ans+=letter
         else:
             ans+='_ '
