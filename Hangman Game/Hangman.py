@@ -1,3 +1,4 @@
+#fix the win function
 import random
 
 WORDLIST_FILENAME = "words.txt"
@@ -9,14 +10,12 @@ def loadWords():
     Depending on the size of the word list, this function may
     take a while to finish.
     """
-    print("Loading word list from file...")
     # inFile: file
     inFile = open(WORDLIST_FILENAME, 'r')
     # line: string
     line = inFile.readline()
     # wordlist: list of strings
     wordlist = line.split()
-    print("  ", len(wordlist), "words loaded.")
     return wordlist
 
 def chooseWord(wordlist):
@@ -36,6 +35,8 @@ def isWordGuessed(secretWord, lettersGuessed):
     returns: boolean, True if all the letters of secretWord are in lettersGuessed;
       False otherwise
     '''
+    print(secretWord)
+    print(lettersGuessed)
     count=0
     for letter in lettersGuessed:
         if letter in secretWord:
@@ -93,8 +94,8 @@ def hangman(secretWord):
       user has not yet guessed.
     Follows the other limitations detailed in the problem write-up.
     '''
-    print("Welcome to the game, Hangman!")
-    print("I am thinking of a word that is",len(secretWord),"letters long.")
+    print("Welcome to Hangman!")
+    print("The word is",len(secretWord),"letters long.")
     
     global lettersGuessed
     mistakeMade=0
@@ -103,18 +104,16 @@ def hangman(secretWord):
     while 8 - mistakeMade > 0:
         
         if isWordGuessed(secretWord, lettersGuessed):
-            print("-------------")
             print("Congratulations, you won!")
             break
             
         else:
-            print("-------------")
-            print("You have",8-mistakeMade,"guesses left.")
+            print("You have",8-mistakeMade,"incorrect guesses left.")
             print("Available letters:",getAvailableLetters(lettersGuessed))
-            guess=str(input("Please guess a letter: ")).lower()
+            guess=str(input("Guess a letter: ")).lower()
             
             if guess in lettersGuessed:
-                print("Oops! You've already guessed that letter:",getGuessedWord(secretWord,lettersGuessed))
+                print("You've already guessed that letter:",getGuessedWord(secretWord,lettersGuessed))
                 
             elif guess in secretWord and guess not in lettersGuessed:
                 lettersGuessed.append(guess)
@@ -123,11 +122,10 @@ def hangman(secretWord):
             else:
                 lettersGuessed.append(guess)
                 mistakeMade += 1
-                print("Oops! That letter is not in my word:",getGuessedWord(secretWord,lettersGuessed))
+                print("That letter is incorrect:",getGuessedWord(secretWord,lettersGuessed))
                 
         if 8 - mistakeMade == 0:
-            print("-------------")
-            print("Sorry, you ran out of guesses. The word was else.",secretWord)
+            print("You ran out of guesses. You lost. The word was ",secretWord)
             break
         
         else:
