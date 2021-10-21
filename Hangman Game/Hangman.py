@@ -9,6 +9,72 @@ def loadWords():
     wordlist = line.split()
     return wordlist
 
+hangers = [
+'''
+------
+|    |  
+|          
+|      
+|      
+|  
+''',
+
+'''
+------
+|    |  
+|    o      
+|      
+|      
+|  
+''',
+
+'''
+------
+|    |  
+|    o      
+|    |      
+|      
+|  
+''',
+
+'''
+------
+|    |  
+|    o      
+|   \|      
+|      
+|  
+
+''',
+
+'''
+------
+|    |  
+|    o      
+|   \|/      
+|      
+|  
+''',
+
+'''
+------
+|    |  
+|    o      
+|   \|/      
+|   /  
+|  
+''',
+
+'''
+------
+|    |  
+|    o      
+|   \|/      
+|   / \ 
+|  
+''',
+]
+
 def chooseWord(wordlist):
     return random.choice(wordlist)
 
@@ -42,19 +108,18 @@ def getGuessedWord(word, lettersGuessed):
 def hangman(word):
     print("Welcome to Hangman!")
     print("The word is",len(word),"letters long.")
-    
     global lettersGuessed
     mistakeMade = 0
     lettersGuessed=[]
     
-    while 8 - mistakeMade > 0:
+    while 6 - mistakeMade > 0:
         
         if isWordGuessed(word, lettersGuessed):
             print("Congratulations, you won!")
             break
             
         else:
-            print("You have",8-mistakeMade,"incorrect guesses left.")
+            print("You have",6-mistakeMade,"incorrect guesses left.")
             guess=str(input("Guess a letter: ")).lower()
             
             if guess in lettersGuessed:
@@ -69,7 +134,7 @@ def hangman(word):
                 mistakeMade += 1
                 print("That letter is incorrect:",getGuessedWord(word,lettersGuessed))
                 
-        if 8 - mistakeMade == 0:
+        if 6 - mistakeMade == 0:
             print("You ran out of guesses. You lost. The word was ",word)
             break
         
