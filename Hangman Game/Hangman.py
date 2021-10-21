@@ -82,7 +82,6 @@ wordlist = loadWords()
 
 def isWordGuessed(word, lettersGuessed):
     count = 0
-    print(word)
     for letter in word:
         if letter in lettersGuessed:
             count += 1
@@ -106,6 +105,7 @@ def getGuessedWord(word, lettersGuessed):
     return answer
         
 def hangman(word):
+    print ()
     print("Welcome to Hangman!")
     print("The word is",len(word),"letters long.")
     global lettersGuessed
@@ -130,15 +130,17 @@ def hangman(word):
                 lettersGuessed.append(guess)
                 print(hangers[mistakeMade])
                 print("Good guess:",getGuessedWord(word,lettersGuessed))
+                print ()
                 
             else:
                 lettersGuessed.append(guess)
                 mistakeMade += 1
                 print(hangers[mistakeMade])
                 print("That letter is incorrect:",getGuessedWord(word,lettersGuessed))
+                print()
                 
         if 6 - mistakeMade == 0:
-            print("You ran out of guesses. You lost. The word was ",word)
+            print("You ran out of guesses. You lost. The word was",word)
             break
         
         else:
