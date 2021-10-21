@@ -111,6 +111,7 @@ def hangman(word):
     global lettersGuessed
     mistakeMade = 0
     lettersGuessed=[]
+    print (hangers[mistakeMade])
     
     while 6 - mistakeMade > 0:
         
@@ -127,11 +128,13 @@ def hangman(word):
                 
             elif guess in word and guess not in lettersGuessed:
                 lettersGuessed.append(guess)
+                print(hangers[mistakeMade])
                 print("Good guess:",getGuessedWord(word,lettersGuessed))
                 
             else:
                 lettersGuessed.append(guess)
                 mistakeMade += 1
+                print(hangers[mistakeMade])
                 print("That letter is incorrect:",getGuessedWord(word,lettersGuessed))
                 
         if 6 - mistakeMade == 0:
